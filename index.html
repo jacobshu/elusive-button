@@ -6,19 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Elusive Button</title>
   <script>
-    let scale = 1;
-    let x = 0;
-    let y = 0;
-    function update() {
-      scale = Math.random() + 0.25
-      x = Math.random() * 50;
-      y = Math.random() * 50;
-    }
-
-    function handleEvent(e) {}
-
-    let button = document.querySelector('#donttouch')
-    button.addEventListener('hover', handleEvent)
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.getElementById('donttouch').addEventListener('mouseover', function (e) {
+        x = (Math.random() * window.innerWidth) - (0.5 * window.innerWidth - 25);
+        y = (Math.random() * window.innerHeight) - (0.5 * window.innerHeight - 25);
+        console.log(e)
+        e.style.transform = `translate(${x}px, ${y}px);`
+      })
+    })
   </script>
   <style>
       .button {
@@ -32,10 +27,6 @@
           text-decoration: none;
           text-transform: uppercase;
           font-family: sans-serif;
-      }
-
-      .button:hover {
-          transform: translate(50px, 50px);
       }
 
       body {
@@ -62,6 +53,6 @@
   </style>
 </head>
 <body>
-  <a id="donttouch" class="button" href="#">Try and Click Me</a>
+<a id="donttouch" class="button" href="#">Try and Click Me</a>
 </body>
 </html>
